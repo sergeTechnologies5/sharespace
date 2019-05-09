@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	
+<meta charset="utf-8">
+<title>ShareSpace - Signup</title>
+	
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+	html,
+	body {
+	  height: 100%;
+	}
+	
+	body {
+	  display: -ms-flexbox;
+	  display: flex;
+	  -ms-flex-align: center;
+	  align-items: center;
+	  padding-top: 40px;
+	  padding-bottom: 40px;
+	  background-color: #f5f5f5;
+	}
+	
+	.form-signin {
+	  width: 100%;
+	  max-width: 400px;
+	  padding: 15px;
+	  margin: auto;
+	}
+	.form-signin .checkbox {
+	  font-weight: 400;
+	}
+	.form-signin .form-control {
+	  position: relative;
+	  box-sizing: border-box;
+	  height: auto;
+	  padding: 10px;
+	  font-size: 16px;
+	}
+	.form-signin .form-control:focus {
+	  z-index: 2;
+	}
+	.form-signin input[type="password"] {
+	  margin-bottom: 20px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+	</style>
+</head>
+<body>
+	<form action="#" th:action="@{/signup}" th:object="${userDetails}" method="post" class="form-signin">
+	  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+	  		<div class="form-group col-xs-12 text-danger">
+	  			<p th:if="${#fields.hasErrors('global')}" th:errors="*{global}">
+	  			<p th:if="${#fields.hasErrors('firstname')}" th:text="${'First Name: '  + #fields.errors('firstname')}"/>
+	  			<p th:if="${#fields.hasErrors('lastname')}" th:text="${'Last Name: '  + #fields.errors('lastname')}"/>
+	  			<p th:if="${#fields.hasErrors('email')}" th:text="${'Email: '  + #fields.errors('email')}"/>
+	  			<p th:if="${#fields.hasErrors('username')}" th:text="${'Username: '  + #fields.errors('username')}"/>
+	  			<p th:if="${#fields.hasErrors('password')}" th:text="${'Password: '  + #fields.errors('password')}"/>
+	  		</div>
+	  <div class="form-row">
+			<div class="form-group col-xs-12 col-md-6">
+			  <label for="inputFirstName" class="sr-only">First Name</label>
+			  <input type="text" th:field="*{firstname}" id="inputFirstName" class="form-control" placeholder="First Name" th:value="*{username}" required autofocus>
+			</div>
+			<div class="form-group col-xs-12 col-md-6">
+			  <label for="inputLastName" class="sr-only">Last Name</label>
+			  <input type="text" th:field="*{lastname}" id="inputLastName" class="form-control" placeholder="Last Name" required>
+			</div>
+		</div>
+		<div class="form-group col-xs-12">
+		  <label for="inputEmail" class="sr-only">Email</label>
+		  <input type="email" th:field="*{email}" id="inputEmail" class="form-control" placeholder="Email" required>
+		</div>
+		<label for="inputUser" class="sr-only">Username</label>
+		<input type="text" th:field="*{username}" id="inputUser" class="form-control" placeholder="Username" th:value="*{username}" required autofocus>
+		<label for="inputPassword" class="sr-only">Password</label>
+		<input type="password" th:field="*{password}" id="inputPassword" class="form-control" placeholder="Password" required>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		<div th:classappend="text-right"><a th:href="@{/signup}">Don't have an account? Signup</a></div>
+	</form>
+</body>
+</html>

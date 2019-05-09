@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: /home/serge/dev/java/springdemo/target/classes/com/geek/sh
+ arespace
+Main-Class: SharespaceApplication.class
+
